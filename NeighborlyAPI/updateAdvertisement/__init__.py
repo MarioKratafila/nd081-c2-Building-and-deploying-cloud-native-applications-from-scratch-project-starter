@@ -12,7 +12,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         try:
             url = os.environ['mongoDbConnectionString']
             client = pymongo.MongoClient(url)
-            database = client['azure']
+            database = client['neighbourly-app-db']
             collection = database['advertisements']
             
             filter_query = {'_id': ObjectId(id)}
