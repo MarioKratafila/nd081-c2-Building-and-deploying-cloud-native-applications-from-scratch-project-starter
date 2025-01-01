@@ -107,6 +107,8 @@ def add_ad_request():
         'price': request.form['price']
     }
     response = requests.post(settings.API_URL + '/createAdvertisement', json=json.dumps(req_data))
+    logic_apps_url = "https://prod-00.centralus.logic.azure.com:443/workflows/eb361cc4ddc049cf9804c24d20a86226/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=trNRybE42wABlOmcDyVk1ve_q7H6U8KDTCK8fK--Yuo"
+    requests.post(logic_apps_url, json=json.dumps(req_data))
     return redirect(url_for('home'))
 
 @app.route('/ad/update/<id>', methods=['POST'])
